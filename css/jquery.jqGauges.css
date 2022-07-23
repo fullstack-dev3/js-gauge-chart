@@ -1,0 +1,22 @@
+.ui-jqradialgauge {
+	margin: 0 auto;
+	max-height: 350px;
+	min-height: 300px;
+	max-width: 350px;
+	min-width: 300px;
+}
+.ui-jqradialgauge canvas:first-child {
+	left: auto !important;
+	position: initial !important;
+	top: auto !important;
+}
+.ui-jqradialgauge canvas:last-child {
+	display: none;
+}
+.col-md-4 span {
+  bottom: 30px;
+  font-size: 40px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
