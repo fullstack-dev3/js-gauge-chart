@@ -13,7 +13,7 @@
 .ui-jqradialgauge canvas:last-child {
 	display: none;
 }
-.col-md-4 span {
+.col-md-4 span.count {
   bottom: 30px;
   font-size: 40px;
   left: 0;

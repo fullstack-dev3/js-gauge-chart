@@ -131,6 +131,32 @@ $(document).ready(function () {
   	$('#fail').css('width', size);
   	$('#fail').css('height', size);
   });
+
+  $('#warnings').click(function() {
+    const value = 100 - $(this).val() - $('#fails').val();
+
+    $('#successes').val(value);
+    $('#warning').next().text($(this).val());
+    $('#success').next().text(value);
+
+    $('#warning').data('value', $(this).val());
+    $('#success').data('value', value);
+
+    updateGauge($('#warning').data('value'), $('#success').data('value'), $('#fail').data('value'));
+  });
+
+  $('#fails').click(function() {
+    const value = 100 - $('#warnings').val() - $(this).val();
+
+    $('#successes').val(value);
+    $('#success').next().text(value);
+    $('#fail').next().text($(this).val());
+
+    $('#success').data('value', value);
+    $('#fail').data('value', $(this).val());
+
+    updateGauge($('#warning').data('value'), $('#success').data('value'), $('#fail').data('value'));
+  });
 });
 
 function updateGauge(v1, v2, v3) {

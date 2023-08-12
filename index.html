@@ -11,21 +11,39 @@
 		<h3 class="text-center my-5">JavaScript Gauge Charts</h3>
 	  <div class="row">
 	  	<div class="col-md-4">
+				<div class="input-group mb-3">
+					<input type="number" id="warnings" min="0" max="15" class="form-control" value="12">
+					<div class="input-group-append">
+						<span class="input-group-text">of 100</span>
+					</div>
+				</div>
 	  		<h4 class="text-center">Warning</h4>
-	  		<div id="warning" data-value="26"></div>
-	  		<span class="text-center">12</span>
+	  		<div id="warning" data-value="12"></div>
+	  		<span class="text-center count">12</span>
 	    </div>
 	    
 	    <div class="col-md-4">
+				<div class="input-group mb-3">
+					<input type="text" id="successes" class="form-control" value="85" disabled>
+					<div class="input-group-append">
+						<span class="input-group-text">of 100</span>
+					</div>
+				</div>
 	    	<h4 class="text-center">Success</h4>
-	    	<div id="success" data-value="68"></div>
-	    	<span class="text-center">45</span>
+	    	<div id="success" data-value="85"></div>
+	    	<span class="text-center count">85</span>
 	    </div>
 	    
 	    <div class="col-md-4">
+				<div class="input-group mb-3">
+					<input type="number" id="fails" min="0" max="10" class="form-control" value="3">
+					<div class="input-group-append">
+						<span class="input-group-text">of 100</span>
+					</div>
+				</div>
 	    	<h4 class="text-center">Fail</h4>
-	    	<div id="fail" data-value="6"></div>
-	    	<span class="text-center">7</span>
+	    	<div id="fail" data-value="3"></div>
+	    	<span class="text-center count">3</span>
 	    </div>
 	  </div>
 	</div>
