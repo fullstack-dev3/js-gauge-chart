@@ -132,30 +132,58 @@ $(document).ready(function () {
   	$('#fail').css('height', size);
   });
 
-  $('#warnings').click(function() {
-    const value = 100 - $(this).val() - $('#fails').val();
+  $('#warnings').on('keydown', function() {
+    const obj = $('#warnings');
 
-    $('#successes').val(value);
-    $('#warning').next().text($(this).val());
-    $('#success').next().text(value);
+    setTimeout(function () {
+      let value = obj.val();
+      if (value == '' || value < 0) {
+        value = 0;
+        obj.val(0);
+      }
+      if (value > 15) {
+        value = 15;
+        obj.val(15);
+      }
 
-    $('#warning').data('value', $(this).val());
-    $('#success').data('value', value);
+      const success = 100 - obj.val() - $('#fails').val();
 
-    updateGauge($('#warning').data('value'), $('#success').data('value'), $('#fail').data('value'));
+      $('#successes').val(success);
+      $('#warning').next().text(value);
+      $('#success').next().text(success);
+
+      $('#warning').data('value', value);
+      $('#success').data('value', success);
+
+      updateGauge($('#warning').data('value'), $('#success').data('value'), $('#fail').data('value'));
+    }, 1);
   });
 
-  $('#fails').click(function() {
-    const value = 100 - $('#warnings').val() - $(this).val();
+  $('#fails').on('keydown', function() {
+    const obj = $('#fails');
 
-    $('#successes').val(value);
-    $('#success').next().text(value);
-    $('#fail').next().text($(this).val());
+    setTimeout(function () {
+      let value = obj.val();
+      if (value == '' || value < 0) {
+        value = 0;
+        obj.val(0);
+      }
+      if (value > 10) {
+        value = 10;
+        obj.val(10);
+      }
 
-    $('#success').data('value', value);
-    $('#fail').data('value', $(this).val());
+      const success = 100 - $('#warnings').val() - value;
 
-    updateGauge($('#warning').data('value'), $('#success').data('value'), $('#fail').data('value'));
+      $('#successes').val(success);
+      $('#success').next().text(success);
+      $('#fail').next().text(value);
+
+      $('#success').data('value', success);
+      $('#fail').data('value', value);
+
+      updateGauge($('#warning').data('value'), $('#success').data('value'), $('#fail').data('value'));
+    }, 1);
   });
 });
 
@@ -181,4 +209,12 @@ function updateGauge(v1, v2, v3) {
       $('#fail').jqLinearGauge('update');
     }
   });
+}
+
+function reload() {
+  updateGauge(100, 100, 100);
+
+  setTimeout(function() {
+  	updateGauge($('#warning').data('value'), $('#success').data('value'), $('#fail').data('value'));
+  }, 600);
 }
